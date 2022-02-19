@@ -12,6 +12,9 @@ import com.auth0.jwt.interfaces.JWTVerifier;
 import com.serendipity.core.enums.ResultCode;
 import com.serendipity.core.exception.BusinessException;
 import com.serendipity.utils.CommonUtils;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.security.KeyFactory;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
@@ -25,6 +28,8 @@ import java.util.Map;
 /**
  * @Auther X .
  */
+@Getter
+@Setter
 public class Token {
     private String id;
     private String name;
@@ -51,10 +56,6 @@ public class Token {
 
     public <T> T getIdValue(Class<T> clazz) {
         return CommonUtils.isEmpty(this.id) ? null : Convert.convert(clazz, this.id);
-    }
-
-    public Integer getIdAsInteger() {
-        return (Integer)this.getIdValue(Integer.class);
     }
 
     public <T> T getClaimValue(String key, Class<T> clazz) {

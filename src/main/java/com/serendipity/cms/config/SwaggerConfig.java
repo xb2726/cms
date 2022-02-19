@@ -22,25 +22,20 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfig extends BaseSwaggerConfig{
     private String getPackage(String name) {
-        String basePackage = "com.binx.cms.controller";
+        String basePackage = "com.serendipity";
         return basePackage.concat(".").concat(name);
     }
 
     @Override
     protected ApiInfoBuilder buildApiInfo(ApiInfoBuilder builder) {
-        return builder.contact(new Contact("X .", "", ""));
+        return builder.contact(new Contact("bin", "", ""));
     }
 
-/*    @Bean
-    @Profile({Constants.MODE_DEV, Constants.MODE_TEST})
-    public Docket managementWebDocket() {
-        return getDocket("管理平台-安防", "1.0.0", getPackage("management"), "management");
-    }*/
 
     @Bean
     @Profile({Constants.MODE_DEV, Constants.MODE_TEST})
     public Docket cmsDocket() {
-        return getDocket("cms框架", "1.0.0", getPackage("cms"), "cms");
+        return getDocket("cms框架", "1.0", getPackage("cms.rest.manage"), "cms");
     }
 
 }

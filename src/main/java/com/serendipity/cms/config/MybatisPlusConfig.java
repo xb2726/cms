@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
  * @Auther X .
  */
 @Configuration
+
 public class MybatisPlusConfig {
 
     /**
@@ -17,4 +18,5 @@ public class MybatisPlusConfig {
     public PaginationInterceptor paginationInterceptor() {
         return new PaginationInterceptor();
     }
+
 }

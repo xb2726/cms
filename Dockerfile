@@ -1,19 +1,23 @@
-FROM openjdk:8-alpine
+#FROM openjdk:8-alpine
+#
+#EXPOSE 9090
+#
+#ENV MODE "pro"
+#ENV JAVA_OPTS ""
+#ENV JAVA_PARAMS ""
+#ENV DEF_JAVA_OPTS "-Djava.security.egd=file:/dev/./urandom -Duser.timezone=Asia/Shanghai -Dfile.encoding=utf-8"
+#
+#ADD cms-1.0.jar app.jar
+#RUN bash -c 'touch /app.jar'
+#
+#ENTRYPOINT [ "sh", "-c", "java ${JAVA_OPTS} ${DEF_JAVA_OPTS} -jar /app.jar ${JAVA_PARAMS} --spring.profiles.active=${MODE} --server.port=9090" ]
 
-WORKDIR /publish
-RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories \
-  && apk add -U tzdata \
-  && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-  && apk del tzdata
 
-EXPOSE 8080
+FROM java:8
 
-ENV YZ_MODE "test"
-ENV JAVA_OPTS ""
-ENV JAVA_PARAMS ""
-ENV DEF_JAVA_OPTS "-Djava.security.egd=file:/dev/./urandom -Duser.timezone=Asia/Shanghai -Dfile.encoding=utf-8"
-#ENV DEF_JAVA_PARAMS "--spring.profiles.active=${YZ_MODE} --server.port=8080"
+EXPOSE 9090
 
-ADD *-web/target/*.jar ./app.jar
+ADD cms-1.0.jar app.jar
+RUN bash -c 'touch /app.jar'
 
-ENTRYPOINT [ "sh", "-c", "java ${JAVA_OPTS} ${DEF_JAVA_OPTS} -jar app.jar ${JAVA_PARAMS} --spring.profiles.active=${YZ_MODE} --server.port=8080" ]
+ENTRYPOINT ["java","-jar","/app.jar","--spring.profiles.active=pro"]

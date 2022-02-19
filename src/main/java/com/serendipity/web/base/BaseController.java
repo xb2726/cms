@@ -82,30 +82,6 @@ public class BaseController {
         }
     }
 
-    protected Integer currentIdAsInteger() {
-        Token token = this.currentToken();
-        return token != null && !CommonUtils.isEmpty(token.getId()) ? token.getIdAsInteger() : null;
-    }
-
-    protected Integer currentRequiredIdAsInteger() {
-        Integer id = this.currentIdAsInteger();
-        if (id != null && id != 0) {
-            return id;
-        } else {
-            throw new BusinessException(ResultCode.UN_AUTHORIZED);
-        }
-    }
-
-    protected Integer currentCommunityId() {
-        Token token = this.currentToken();
-        return token == null ? null : (Integer)token.getClaimValue("communityId", Integer.class);
-    }
-
-    protected Integer currentHouseId() {
-        Token token = this.currentToken();
-        return token == null ? null : (Integer)token.getClaimValue("houseId", Integer.class);
-    }
-
     protected <T> ResultDTO<T> success() {
         return ResultDTO.success();
     }

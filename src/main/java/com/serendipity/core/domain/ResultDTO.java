@@ -29,6 +29,10 @@ public class ResultDTO<T> implements Serializable {
         this.timestamp = System.currentTimeMillis();
     }
 
+    public ResultDTO() {
+
+    }
+
     private static <T> ResultDTO<T> result(ResultCode resultCode, String message) {
         return new ResultDTO(message, resultCode.getCode());
     }
