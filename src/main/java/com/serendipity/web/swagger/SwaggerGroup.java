@@ -17,7 +17,7 @@ public @interface SwaggerGroup {
 
     String description() default "";
 
-    String basePackage() default "com.yunzhicloud";
+    String basePackage() default "com.serendipity";
 
     String[] paths() default {};
 }

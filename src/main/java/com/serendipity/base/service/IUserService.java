@@ -3,6 +3,7 @@ package com.serendipity.base.service;
 import com.serendipity.base.entity.dto.LoginDTO;
 import com.serendipity.base.entity.dto.UserQueryDTO;
 import com.serendipity.base.entity.po.User;
+import com.serendipity.base.entity.vo.LoginVo;
 import com.serendipity.core.domain.PagedDTO;
 
 import java.util.List;
@@ -25,5 +26,7 @@ public interface IUserService {
      * 用户登录
      * @param dto
      */
-    String login(LoginDTO dto);
+    LoginVo login(LoginDTO dto);
+
+    int logout(String id);
 }

@@ -1,4 +1,4 @@
-package com.serendipity.cms.dao;
+package com.serendipity.cms.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.serendipity.cms.entity.po.Industry;

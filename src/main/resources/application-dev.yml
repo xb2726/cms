@@ -8,11 +8,23 @@ spring:
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+     initial-size: 3
+     min-idle: 3
+     max-active: 20
+     max-wait: 60000
+     test-while-idle: false
+     pool-prepared-statements: true
+
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
     serialization:
       write-dates-as-timestamps: false
+  redis:
+    host: localhost
+    port: 6379
 
 mybatis-plus:
   configuration:
@@ -22,10 +34,9 @@ mybatis-plus:
     default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
   mapper-locations: classpath*:mapper/**/*Mapper.xml
   global-config:
-    # Âß¼­É¾³ýÅäÖÃ
+    #è¿™æ ·
     db-config:
-      # É¾³ýÇ°
+      # É¾ï¿½ï¿½Ç°
       logic-not-delete-value: 1
-      # É¾³ýºó
+      # É¾ï¿½ï¿½ï¿½ï¿½
       logic-delete-value: 0
-

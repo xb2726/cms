@@ -4,7 +4,7 @@ import cn.hutool.core.collection.ListUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.serendipity.cms.dao.IndustryMapper;
+import com.serendipity.cms.mapper.IndustryMapper;
 import com.serendipity.cms.entity.dto.IndustryQueryDTO;
 import com.serendipity.cms.entity.po.Industry;
 import com.serendipity.cms.service.IIndustryService;

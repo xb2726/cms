@@ -13,8 +13,8 @@ import lombok.Setter;
 public class LoginVo {
     @ApiModelProperty("登录ming")
     private String  loginName;
-    @ApiModelProperty("密码")
-    private String password;
-    @ApiModelProperty("JWT-TOKEN")
-    private Token token;
+    @ApiModelProperty("菜单栏")
+    private String  emu;
+    @ApiModelProperty("TOKEN")
+    private String token;
 }

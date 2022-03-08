@@ -7,10 +7,12 @@ import com.serendipity.cms.entity.po.Industry;
 import com.serendipity.cms.service.IIndustryService;
 import com.serendipity.core.domain.PagedDTO;
 import com.serendipity.core.domain.ResultDTO;
+import com.serendipity.web.base.BaseController;
 import com.serendipity.web.vo.PageVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,14 +27,15 @@ import static com.serendipity.core.domain.ResultDTO.success;
 @RestController
 @RequestMapping("/manage/industry")
 @Api("行业研报")
-public class IndustryRest {
+@Slf4j
+public class IndustryRest extends BaseController {
 
     @Autowired
     private IIndustryService industryService;
 
     @ApiOperation("保存")
     @PostMapping(value = "")
-        public ResultDTO<Integer> save(@RequestBody @Valid Industry industry) {
+    public ResultDTO<Integer> save(@RequestBody @Valid Industry industry) {
         return success(industryService.save(industry));
     }
 

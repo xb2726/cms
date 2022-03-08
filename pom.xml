@@ -41,15 +41,15 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--   redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.4.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.hothub</groupId>
-            <artifactId>calendarist</artifactId>
-            <version>1.0.7</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
@@ -76,6 +76,7 @@
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>${version.swagger.knife4j.ui}</version>
         </dependency>
+        <!--JWT登录认证-->
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
@@ -86,6 +87,13 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>fluent-hc</artifactId>
             <version>4.5.2</version>
+        </dependency>
+
+        <!--德鲁伊数据库连接池-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.2.6</version>
         </dependency>
     </dependencies>
 <!--    <distributionManagement>-->

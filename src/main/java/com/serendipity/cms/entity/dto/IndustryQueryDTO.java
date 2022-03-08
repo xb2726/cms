@@ -1,7 +1,6 @@
 package com.serendipity.cms.entity.dto;
 
 import com.serendipity.extra.query.Condition;
-import com.serendipity.extra.query.LikeMode;
 import com.serendipity.extra.query.MatchMode;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -14,10 +13,10 @@ import lombok.Setter;
 @Setter
 public class IndustryQueryDTO {
 
-    @Condition(target = "title",likeMode = LikeMode.ANYWHERE)
+    @Condition(target = "title",machMode = MatchMode.LIKE)
     @ApiModelProperty(value = "标题")
     private String title;
 
-    @Condition(target = "info_code",machMode = MatchMode.EQ)
+    @Condition(target = "info_code")
     private String infoCode;
 }

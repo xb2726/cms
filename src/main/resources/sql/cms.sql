@@ -58,3 +58,26 @@ create table if not exists b_cms.tb_industry
     deleted         int          null
 );
 create index tb_industry_info_code_index on tb_industry (info_code);
+
+create table if not exists b_cms.tb_industry_record
+(
+    id          varchar(20) not null,
+    user_id     varchar(20) not null,
+    industry_id varchar(20) not null,
+    creator_id      varchar(20)  null,
+    create_date     date         null,
+    updater_id      varchar(20)  null,
+    update_date     date         null,
+    reserved1       varchar(100) null,
+    reserved2       varchar(100) null,
+    deleted         int          null
+)
+    comment '行业研报浏览记录';
+create index tb_industry_record_id_index
+    on tb_industry_record (id);
+
+create index tb_industry_record_industry_id_index
+    on tb_industry_record (industry_id);
+
+create index tb_industry_record_user_id_index
+    on tb_industry_record (user_id);
