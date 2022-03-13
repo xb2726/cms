@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.java.Log;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -30,5 +31,6 @@ public class BasePO implements Serializable {
     @TableField(value = "reserved2", updateStrategy = FieldStrategy.NEVER)
     private String reserved2;
     @TableField(value = "deleted", fill = FieldFill.INSERT, updateStrategy = FieldStrategy.NEVER)
+    @TableLogic
     private Integer deleted;
 }

@@ -23,7 +23,7 @@ services:
     environment:    # 指定 root 用户的密码
       - MYSQL_ROOT_PASSWORD=Lx753369
     volumes:
-      - /root/service/mysql/data:/var/lib/mysql           # 挂载数据目录
+      - /root/service/mysql/data:/var/lib/mysql         # 挂载数据目录
       - /root/service/mysql/config:/etc/mysql/conf.d      # 挂载配置文件目录
       - /root/service/mysql/log:/var/log/mysql            #日志文件挂载
     privileged: true

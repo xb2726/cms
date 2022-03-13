@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.serendipity.cms.mapper.IndustryMapper">
+
+    <select id="pageQueryRead" parameterType="com.serendipity.cms.entity.dto.IndustryQueryDTO"
+            resultType="com.serendipity.cms.entity.po.Industry">
+        select
+            ti.id as id,
+            ti.pdf_url as pdfUrl,
+            ti.industry_name as industryName,
+            ti.title as title,
+            ti.org_s_name as orgSName,
+            ti.publish_date as publishDate,
+            ti.em_rating_name  as emRatingName,
+            tir.id as reserved1
+
+        from tb_industry ti
+                 left join tb_industry_record tir
+                           on ti.id = tir.industry_id and tir.user_id=#{dto.userId}
+        where 1=1
+            <if test="dto.title!=null and dto.title!=''">
+               and ti.title like CONCAT('%',#{dto.title},'%')
+            </if>
+
+        order by  publishDate desc ,id desc
+
+        limit ${(dto.pageNum-1)*dto.pageSize},${dto.pageSize}
+    </select>
+
+    <select id="pageQueryReadTotal" resultType="java.lang.Integer" parameterType="com.serendipity.cms.entity.dto.IndustryQueryDTO">
+        select
+        count(1)
+        from tb_industry ti
+        left join tb_industry_record tir
+        on ti.id = tir.industry_id
+        where 1=1
+        <if test="dto.title!=null and dto.title!=''">
+            and ti.title like  CONCAT('%',#{dto.title},'%')
+        </if>
+    </select>
+
+</mapper>

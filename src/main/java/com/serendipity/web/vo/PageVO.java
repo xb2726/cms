@@ -4,12 +4,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.validation.constraints.Min;
+import java.io.Serializable;
 
 /**
  * @Auther bin
  */
 @ApiModel
-public class PageVO {
+public class PageVO implements Serializable {
 
     @ApiModelProperty("页码(默认：1)")
     @Min(

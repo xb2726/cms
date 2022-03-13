@@ -62,6 +62,7 @@ public class IndustryRest extends BaseController {
     @GetMapping(value = "/page")
     @ApiOperation(value = "分页查询", response = Industry.class)
     public ResultDTO<PagedDTO<Industry>> pageQuery(@Valid PageVO pageVO, @Valid IndustryQueryDTO dto) {
+        dto.setUserId(currentRequiredId());
         PagedDTO<Industry> userPagedDTO = industryService.pageQuery(dto, pageVO.getPageNum(), pageVO.getPageSize());
         return success(userPagedDTO);
     }

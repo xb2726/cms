@@ -53,11 +53,10 @@ public class IndustryServiceImpl implements IIndustryService {
 
     @Override
     public PagedDTO<Industry> pageQuery(IndustryQueryDTO dto, Integer pageNum, Integer pageSize) {
-        QueryWrapper<Industry> wrapper = new QueryWrapper<>();
-        QueryWrapperUtils.initCondition(dto, wrapper);
-        wrapper.orderByDesc("publish_date","id");
-        final IPage<Industry> fooPage = new Page(pageNum, pageSize);
-        IPage<Industry> dataPage = industryMapper.selectPage(fooPage, wrapper);
-        return new PagedDTO<>(dataPage.getTotal(), dataPage.getRecords());
+        dto.setPageNum(pageNum);
+        dto.setPageSize(pageSize);
+        Integer total = industryMapper.pageQueryReadTotal(dto);
+        List<Industry> industries = industryMapper.pageQueryRead(dto);
+        return new PagedDTO<>(total, industries);
     }
 }

@@ -32,7 +32,7 @@ public class IndustryRecordRest extends BaseController {
 
     @ApiOperation("保存")
     @PostMapping(value = "")
-    public ResultDTO<Integer> save(@RequestBody @Valid IndustryRecordPO po) {
+    public ResultDTO<Integer> save( @Valid IndustryRecordPO po) {
         po.setUserId(currentRequiredId());
         return success(industryRecordService.save(po));
     }

@@ -4,6 +4,7 @@ import com.serendipity.cms.mapper.IndustryMapper;
 import com.serendipity.cms.entity.po.IndustryRecordPO;
 import com.serendipity.cms.mapper.IndustryRecordMapper;
 import com.serendipity.cms.service.IIndustryRecordService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +14,20 @@ import org.springframework.stereotype.Service;
  * @Date:   2022-03-06
  */
 @Service
+@Slf4j
 public class IndustryRecordServiceImpl  implements IIndustryRecordService {
 
     @Autowired
     private IndustryRecordMapper industryRecordMapper;
     @Override
     public int save(IndustryRecordPO industryRecordPO) {
-        return  industryRecordMapper.insert(industryRecordPO);
-        // 继承 提子  车厘子
+        try {
+            return  industryRecordMapper.insert(industryRecordPO);
+        }catch (Exception e){
+           // throw new RuntimeException(e.getMessage());
+            log.error("重复数据。跳过insert");
+            return 1;
+        }
+
     }
 }

@@ -22,15 +22,17 @@ public class MybatisConfig implements MetaObjectHandler {
 
     @Override
     public void insertFill(MetaObject metaObject) {
-        this.setFieldValByName("creator_id",getCurrentUserId(),metaObject);
-        this.setFieldValByName("create_date",new Date(),metaObject);
+        this.setFieldValByName("creatorId",getCurrentUserId(),metaObject);
+        this.setFieldValByName("createDate",new Date(),metaObject);
+        this.setFieldValByName("updaterId",getCurrentUserId(),metaObject);
+        this.setFieldValByName("updateDate", new Date(),metaObject);
         this.setFieldValByName("deleted",0,metaObject);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        this.setFieldValByName("updater_id",getCurrentUserId(),metaObject);
-        this.setFieldValByName("update_date", new Date(),metaObject);
+        this.setFieldValByName("updaterId",getCurrentUserId(),metaObject);
+        this.setFieldValByName("updateDate", new Date(),metaObject);
     }
 
     /**
@@ -44,7 +46,7 @@ public class MybatisConfig implements MetaObjectHandler {
         }
         //获取到当前线程绑定的请求对象
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-//已经拿到session,就可以拿到session中保存的用户信息了。
+        //已经拿到session,就可以拿到session中保存的用户信息了。
         Token token =(Token) request.getSession().getAttribute("SD_TOKEN");
         return token.getId();
     }

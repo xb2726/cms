@@ -1,6 +1,6 @@
 package com.serendipity.base.filter;
 
-import cn.hutool.json.JSONUtil;
+import com.alibaba.fastjson.JSON;
 import com.serendipity.core.enums.ResultCode;
 import com.serendipity.core.exception.BusinessException;
 import com.serendipity.core.utils.CommonUtils;
@@ -25,7 +25,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
     private final RedisStringUtil redisStringUtil;
 
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("********************服务端请求：{}******************************", request.getRequestURI());
+
         if (!(handler instanceof HandlerMethod)) {
             return true;
         } else {
@@ -39,10 +39,10 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
             }*/
 
            /* if (auth != null && !auth.anonymous()) {*/
-            log.error(String.format("preHandle.HttpServletRequest:%s", request));
                 Token token = AuthContext.getToken(this.config);
-
-            log.error(String.format("token:%s", JSONUtil.toJsonStr(token)));
+                log.info("****服务端请求：{}", request.getRequestURI());
+                log.info("****服务端请求参数：{}", JSON.toJSONString(request.getParameterMap()));
+                log.info("****服务端请求ID：{}",token!=null?token.getId():null);
                 if (token != null && !CommonUtils.isEmpty(token.getId())) {
                     // 续签
                     String redisToken = (String)redisStringUtil.get("cms:login:" + token.getId());
