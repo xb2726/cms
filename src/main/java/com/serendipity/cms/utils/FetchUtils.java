@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.serendipity.cms.entity.dto.IndustryDTO;
+import com.serendipity.cms.entity.dto.StockDTO;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.client.fluent.Response;
 import java.io.IOException;
@@ -17,15 +18,6 @@ import java.util.Map;
  */
 public class FetchUtils {
 
-    // http://reportapi.eastmoney.com/report/list
-    // ?cb=datatable5450805&industryCode=*&pageSize=50&industry=*&rating=&ratingChange=&
-    // beginTime=2019-01-01&endTime=2021-01-01&pageNo=2&fields=&qType=0&orgCode=&code=*
-    // &rcode=&p=2&pageNum=2&_=1609486623372
-
-
-    //http://reportapi.eastmoney.com/report/list
-    // ?cb=datatable6767533&industryCode=*&pageSize=50&industry=*&rating=*&ratingChange=*
-    // &beginTime=2019-01-01&endTime=2021-01-01&pageNo=1&fields=&qType=1&orgCode=&rcode=&_=1609486236280
     private static final Map<String, String> headerMap = new HashMap<>();
     private static final String DATA_URL = "http://reportapi.eastmoney.com/report/list";
     private static final String DATA_BODY = "cb=datatable${datatableNO}&industryCode=*&pageSize=50&industry=*&rating=&ratingChange=&beginTime=2020-11-01" +
@@ -70,11 +62,9 @@ public class FetchUtils {
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         if(isStocks){
-
-            return null;
+            return mapper.readValue(substring, StockDTO.class);
         }
-        IndustryDTO dto=mapper.readValue(substring, IndustryDTO.class);
-        return dto;
+        return mapper.readValue(substring, IndustryDTO.class);
     }
 
    /* public static void main(String[] args) throws IOException {

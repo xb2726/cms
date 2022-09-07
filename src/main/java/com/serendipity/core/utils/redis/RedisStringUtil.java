@@ -1,6 +1,7 @@
 package com.serendipity.core.utils.redis;
 
 import com.serendipity.core.exception.BusinessException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -11,6 +12,7 @@ import java.util.Map;
  * @Auther bin
  */
 @Component
+@Slf4j
 public class RedisStringUtil extends RedisCommonUtil {
 
     /**
@@ -21,6 +23,7 @@ public class RedisStringUtil extends RedisCommonUtil {
     public Object get(String key){
         if(null == key)
             return null;
+        log.info("redis  start....");
         return redisTemplate.opsForValue().get(key);
     }
 

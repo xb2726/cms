@@ -39,7 +39,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
         <!--   redis-->
         <dependency>
@@ -88,26 +87,52 @@
             <artifactId>fluent-hc</artifactId>
             <version>4.5.2</version>
         </dependency>
+        <!--爬取依赖-->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.14.3</version>
+        </dependency>
 
-        <!--德鲁伊数据库连接池-->
         <dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            <version>1.2.6</version>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.79</version>
+        </dependency>
+        <!--kafka-->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+        <!--PDF 关键字-->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itextpdf</artifactId>
+            <version>5.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.47</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcmail-jdk15on</artifactId>
+            <version>1.47</version>
         </dependency>
     </dependencies>
-<!--    <distributionManagement>-->
-<!--        <repository>-->
-<!--            <id>nexus-releases</id>-->
-<!--            <name>Releases</name>-->
-<!--            <url>http://192.168.200.6:8888/nexus/repository/binx/localWarehouse/</url>-->
-<!--        </repository>-->
-<!--        <snapshotRepository>-->
-<!--            <id>nexus-snapshots</id>-->
-<!--            <name>Snapshot</name>-->
-<!--            <url>http://192.168.200.6:8888/nexus/repository/binx/localWarehouse/</url>-->
-<!--        </snapshotRepository>-->
-<!--    </distributionManagement>-->
+    <!--    <distributionManagement>-->
+    <!--        <repository>-->
+    <!--            <id>nexus-releases</id>-->
+    <!--            <name>Releases</name>-->
+    <!--            <url>http://192.168.200.6:8888/nexus/repository/binx/localWarehouse/</url>-->
+    <!--        </repository>-->
+    <!--        <snapshotRepository>-->
+    <!--            <id>nexus-snapshots</id>-->
+    <!--            <name>Snapshot</name>-->
+    <!--            <url>http://192.168.200.6:8888/nexus/repository/binx/localWarehouse/</url>-->
+    <!--        </snapshotRepository>-->
+    <!--    </distributionManagement>-->
     <build>
         <plugins>
             <plugin>

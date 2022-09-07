@@ -20,8 +20,8 @@ create table if not exists b_cms.sys_user
     resign_time      date         null,
     locked           int(1)       null,
     remark           varchar(200) null,
-    create_date      date         null,
-    update_date      date         null,
+    create_date      datetime         null,
+    update_date      datetime         null,
     reserved1        varchar(100) null,
     reserved2        varchar(100) null,
     deleted          int          null,
@@ -29,7 +29,7 @@ create table if not exists b_cms.sys_user
     updater_id       varchar(20)  null
 )
     comment '用户';
-create index sys_user_login_name_index on sys_user (login_name);
+create index sys_user_login_name_index on b_cms.sys_user (login_name);
 
 
 
@@ -50,14 +50,14 @@ create table if not exists b_cms.tb_industry
     publish_date    datetime     null,
     title           varchar(100) null,
     creator_id      varchar(20)  null,
-    create_date     date         null,
+    create_date     datetime         null,
     updater_id      varchar(20)  null,
-    update_date     date         null,
+    update_date     datetime         null,
     reserved1       varchar(100) null,
     reserved2       varchar(100) null,
     deleted         int          null
 );
-create index tb_industry_info_code_index on tb_industry (info_code);
+create index tb_industry_info_code_index on b_cms.tb_industry (info_code);
 
 create table if not exists b_cms.tb_industry_record
 (

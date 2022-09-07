@@ -55,36 +55,5 @@ public class SysDepPO extends BasePO {
     @ApiModelProperty(value = "排序")
     @TableField(value = "SORT")
 	private java.lang.Integer sort;
-	/**creatorId*/
-    @ApiModelProperty(value = "creatorId")
-    @TableField(value = "CREATOR_ID")
-	private java.lang.String creatorId;
-	/**createDate*/
-	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    @ApiModelProperty(value = "createDate")
-    @TableField(value = "CREATE_DATE")
-	private java.util.Date createDate;
-	/**updaterId*/
-    @ApiModelProperty(value = "updaterId")
-    @TableField(value = "UPDATER_ID")
-	private java.lang.String updaterId;
-	/**updateDate*/
-	@JsonFormat(timezone = "GMT+8",pattern = "yyyy-MM-dd")
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    @ApiModelProperty(value = "updateDate")
-    @TableField(value = "UPDATE_DATE")
-	private java.util.Date updateDate;
-	/**reserved1*/
-    @ApiModelProperty(value = "reserved1")
-    @TableField(value = "RESERVED1")
-	private java.lang.String reserved1;
-	/**reserved2*/
-    @ApiModelProperty(value = "reserved2")
-    @TableField(value = "RESERVED2")
-	private java.lang.String reserved2;
-	/**deleted*/
-    @ApiModelProperty(value = "deleted")
-    @TableField(value = "DELETED")
-	private java.lang.Integer deleted;
+
 }

@@ -39,7 +39,7 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     auto-mapping-behavior: full
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
     default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
   mapper-locations: classpath*:mapper/**/*Mapper.xml
   global-config:
@@ -54,7 +54,8 @@ mybatis-plus:
 logging:
   level:
     com.serendipity: info
-    org.hibernate: DEBUG
+    com.baomidou.mybatisplus: DEBUG
+    com.*.mapper: DEBUG
 #   root: info
   path: /app/logs
   file:
@@ -64,3 +65,5 @@ logging:
     file: "%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(-){faint} %clr([%14.14t]){faint} %clr(%-40.40logger.%13.13M){cyan} %clr(%3.3L) %clr(:){faint} %msg%n${LOG_EXCEPTION_CONVERSION_WORD:%wEx}"
 
 
+pdf:
+  path: /pdf
